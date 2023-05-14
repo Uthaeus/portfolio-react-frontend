@@ -1,15 +1,35 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+
+import { UserContext } from "../store/user-context";
 
 function MainNavigation() {
+    const userCtx = useContext(UserContext);
+
+    let welcome = userCtx.user ? "Welcome " + userCtx.user.username : "Welcome Guest";
 
     function logoutHandler() {
         console.log('logoutHandler');
+
+        fetch('http://localhost:4000/users/sign_out', {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('portfolio_token'),
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                localStorage.removeItem('portfolio_token');
+                userCtx.logout();
+            }
+        })
+        .catch(error => console.log('logout error: ', error));
     }
 
     return (
         <nav className="main-nav-container">
             <div className="welcome-wrapper">
-                Logo
+                <p className="main-nav-welcome">{welcome}</p>
             </div>
 
             <div className="links-wrapper">
@@ -20,9 +40,14 @@ function MainNavigation() {
             </div>
 
             <div className="auth-links-wrapper">
-                <NavLink to="/auth/sign-up" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign Up</NavLink>
-                <NavLink to="/auth/sign-in" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign In</NavLink>
-                <button onClick={logoutHandler} className="logout-btn">Sign Out</button>
+                {userCtx.user && <button onClick={logoutHandler} className="logout-btn">Sign Out</button>}
+                {!userCtx.user && (
+                    <>
+                        <NavLink to="/auth/sign-up" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign Up</NavLink>
+                        <NavLink to="/auth/sign-in" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign In</NavLink>
+                    </>
+                )}
+                
             </div>
         </nav>
     );

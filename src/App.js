@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useContext, useEffect } from "react";
 
+import { UserContext } from "./components/store/user-context";
 import RootLayout from "./components/root-layout";
 import BlogLayout from "./components/blog-layout";
 import AuthLayout from "./components/auth-layout";
@@ -71,6 +73,32 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const userCtx = useContext(UserContext);
+
+  useEffect(() => {
+    let token = localStorage.getItem("portfolio_token");
+
+    if (token && token !== undefined && !userCtx.user) {
+      fetch("http://localhost:4000/user_current", {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw response;
+        })
+        .then(data => {
+          userCtx.login(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }, []);
+
   return <RouterProvider router={router} />;
 }
 
