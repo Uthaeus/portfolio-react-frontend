@@ -1,8 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+
+import { UserContext } from "../store/user-context";
 
 function BlogForm({ blog }) {
     const { register, handleSubmit, error, reset } = useForm();
+    const userCtx = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (blog) {
@@ -10,8 +15,38 @@ function BlogForm({ blog }) {
         }
     }, [blog, reset]);
 
+    function buildForm(data) {
+        const formData = new FormData();
+        formData.append('blog[user_id]', userCtx.user.id);
+        formData.append('blog[title]', data.title);
+        formData.append('blog[body]', data.body);
+        formData.append('blog[image]', data.image[0]);
+        return formData;
+    }
+
     function submitHandler(data) {
         console.log(data);
+
+        const formData = buildForm(data);
+
+        const url = blog ? `http://localhost:4000/blogs/${blog.id}` : "http://localhost:4000/blogs";
+        const method = blog ? "PUT" : "POST";
+
+        fetch(url, {
+            method: method,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('portfolio_token')
+            },
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                navigate('/blogs');
+                return response.json();
+            }
+            throw response;
+        })
+        .catch(error => console.log('blog submit error', error));
     }
 
     return (

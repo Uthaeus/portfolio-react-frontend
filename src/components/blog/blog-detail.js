@@ -34,7 +34,7 @@ function BlogDetail() {
             { !isLoading && (
                 <>
                     <div>
-                        <img src={blog?.main_image} alt={blog?.title} width='600px' height='400px' />
+                        <img src={`http://localhost:4000${blog.image.url}`} alt={blog?.title} width='600px' height='400px' />
                     </div>
                     <div>
                         <h1>{blog?.title}</h1>
