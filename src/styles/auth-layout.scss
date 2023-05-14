@@ -2,6 +2,29 @@
 .auth-layout-container {
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(215, 213, 213);
+    background-color: rgb(238, 228, 221);
     color: black;
+}
+
+.auth-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 6rem 20px;
+
+    .auth-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: rgb(26, 117, 145);
+    }
+}
+
+.auth-form-wrapper {
+    width: 45%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(201, 220, 210, 0.654);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

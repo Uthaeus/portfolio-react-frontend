@@ -1,7 +1,7 @@
 
-.main-navigation-container {
+.main-nav-container {
     width: 100%;
-    min-height: 100vh;
+    min-height: 75px;
     background-color: rgb(10, 13, 14);
     color: grey;
     display: grid;
@@ -13,28 +13,28 @@
         text-align: center;
     }
 
+    .nav-link {
+        font-size: 1.2em;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: rgb(48, 88, 101);
+            font-size: 1.4em;
+        }
+    }
+
+    .link-active {
+        color: rgb(48, 88, 101);
+        font-size: 1.4em;
+        border-bottom: 1px solid rgb(48, 88, 101);
+    }
+
     .links-wrapper {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-
-        .nav-link {
-            font-size: 1.2em;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                color: rgb(48, 88, 101);
-                font-size: 1.4em;
-            }
-        }
-
-        .link-active {
-            color: rgb(48, 88, 101);
-            font-size: 1.4em;
-            border-bottom: 1px solid rgb(48, 88, 101);
-        }
     }
 
     .auth-links-wrapper {

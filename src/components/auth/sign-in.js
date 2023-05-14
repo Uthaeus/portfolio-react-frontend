@@ -8,9 +8,9 @@ function SignIn() {
     }
 
     return (
-        <div>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit(submitHandler)}>
+        <div className="auth-wrapper">
+            <h1 className="auth-title">Sign In</h1>
+            <form onSubmit={handleSubmit(submitHandler)} className="auth-form-wrapper">
                 <div className="form-group mb-3">
                     <label htmlFor="email">Email</label>
                     <input type='email' className="form-control" {...register('email', { required: true })} />
