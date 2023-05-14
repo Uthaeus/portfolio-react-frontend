@@ -9,6 +9,9 @@ import ContactPage from "./pages/contact";
 import Blogs from "./pages/blogs";
 import SignUp from "./components/auth/sign-up";
 import SignIn from "./components/auth/sign-in";
+import NewBlog from "./components/blog/new-blog";
+import BlogDetail from "./components/blog/blog-detail";
+import EditBlog from "./components/blog/edit-blog";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Blogs />
+      },
+      {
+        path: "/blogs/new",
+        element: <NewBlog />
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetail />
+      },
+      {
+        path: "/blogs/:id/edit",
+        element: <EditBlog />
       }
     ]
   },

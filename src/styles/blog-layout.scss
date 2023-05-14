@@ -5,3 +5,71 @@
     background-color: rgb(136, 162, 179);
     color: black;
 }
+
+.blogs-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 6rem 20px;
+
+    .blogs-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .blogs-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: rgb(26, 117, 145);
+    }
+
+    .blogs-content {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+
+        .blogs-list-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.blogs-sidebar {
+    width: 100%;
+    padding: 3rem;
+    background-color: rgba(201, 220, 210, 0.654);
+
+    .blogs-sidebar-header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .blogs-sidebar-socials-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .sidebar-social-link {
+            font-size: 1.6em;
+            text-decoration: none;
+            color: rgb(26, 117, 145);
+            margin: 1rem 2rem;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: rgb(136, 162, 179);
+                font-size: 1.8em;
+            }
+        }
+    }
+
+}
