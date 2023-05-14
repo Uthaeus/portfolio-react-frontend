@@ -6,4 +6,54 @@
     color: grey;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
+    .welcome-wrapper {
+        background-color: rgb(48, 88, 101);
+        color: black;
+        text-align: center;
+    }
+
+    .links-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .nav-link {
+            font-size: 1.2em;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: rgb(48, 88, 101);
+                font-size: 1.4em;
+            }
+        }
+
+        .link-active {
+            color: rgb(48, 88, 101);
+            font-size: 1.4em;
+            border-bottom: 1px solid rgb(48, 88, 101);
+        }
+    }
+
+    .auth-links-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .logout-btn {
+        font-size: 1.2em;
+        text-decoration: none;
+        border: none;
+        background-color: transparent;
+        color: white;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: rgb(48, 88, 101);
+            font-size: 1.4em;
+        }
+    }
 }

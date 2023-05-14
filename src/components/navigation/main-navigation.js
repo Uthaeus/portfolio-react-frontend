@@ -8,20 +8,21 @@ function MainNavigation() {
 
     return (
         <nav className="main-nav-container">
-            <div>
+            <div className="welcome-wrapper">
                 Logo
             </div>
-            <div>
-                <NavLink to="/" end>Home</NavLink>
-                <NavLink to="/about">About</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
-                <NavLink to="/blogs">Blogs</NavLink>
+
+            <div className="links-wrapper">
+                <NavLink to="/" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'} end>Home</NavLink>
+                <NavLink to="/about" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>About</NavLink>
+                <NavLink to="/contact" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Contact</NavLink>
+                <NavLink to="/blogs" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Blogs</NavLink>
             </div>
 
-            <div>
-                <NavLink to="/auth/sign-up">Sign Up</NavLink>
-                <NavLink to="/auth/sign-in">Sign In</NavLink>
-                <button onClick={logoutHandler}>Sign Out</button>
+            <div className="auth-links-wrapper">
+                <NavLink to="/auth/sign-up" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign Up</NavLink>
+                <NavLink to="/auth/sign-in" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign In</NavLink>
+                <button onClick={logoutHandler} className="logout-btn">Sign Out</button>
             </div>
         </nav>
     );
