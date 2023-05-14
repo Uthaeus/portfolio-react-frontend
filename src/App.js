@@ -14,6 +14,7 @@ import SignIn from "./components/auth/sign-in";
 import NewBlog from "./components/blog/new-blog";
 import BlogDetail from "./components/blog/blog-detail";
 import EditBlog from "./components/blog/edit-blog";
+import AdminOptions from "./components/admin/admin-options";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />
+      },
+      {
+        path: "/admin",
+        element: <AdminOptions />
       }
     ]
   },

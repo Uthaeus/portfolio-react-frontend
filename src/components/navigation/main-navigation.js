@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 
 import { UserContext } from "../store/user-context";
@@ -41,6 +41,7 @@ function MainNavigation() {
 
             <div className="auth-links-wrapper">
                 {userCtx.user && <button onClick={logoutHandler} className="logout-btn">Sign Out</button>}
+                {userCtx.user && userCtx.user.role === 'site_admin' && <Link to='/admin' className="nav-link">Admin Options</Link>}
                 {!userCtx.user && (
                     <>
                         <NavLink to="/auth/sign-up" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign Up</NavLink>
