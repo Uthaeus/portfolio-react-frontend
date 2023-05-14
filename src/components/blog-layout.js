@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 
 import MainNavigation from "./navigation/main-navigation";
 
-function RootLayout() {
+function BlogLayout() {
 
     return (
         <div>
@@ -12,4 +12,4 @@ function RootLayout() {
     );
 }
 
-export default RootLayout;
+export default BlogLayout;
