@@ -2,14 +2,13 @@ import { Outlet } from "react-router";
 
 import MainNavigation from "./navigation/main-navigation";
 
-function BlogLayout() {
-
+function AuthLayout() {
     return (
-        <div className="blog-layout-container">
+        <div className="auth-layout-container">
             <MainNavigation />
             <Outlet />
         </div>
     );
 }
 
-export default BlogLayout;
+export default AuthLayout;

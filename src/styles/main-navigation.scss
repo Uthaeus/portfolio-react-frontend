@@ -1,0 +1,9 @@
+
+.main-navigation-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(10, 13, 14);
+    color: grey;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
