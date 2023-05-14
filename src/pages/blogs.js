@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import BlogItem from "../components/blog/blog-item";
+
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,14 +24,11 @@ function Blogs() {
       <h1>Blogs</h1>
       {isLoading && <p>Loading...</p>}
       {!isLoading && (
-        <ul>
+        <div>
           {blogs.map((blog) => (
-            <li key={blog.id}>
-              <h2>{blog.title}</h2>
-              <p>{blog.content}</p>
-            </li>
+            <BlogItem key={blog.id} blog={blog} />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
