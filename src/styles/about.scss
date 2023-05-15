@@ -4,5 +4,55 @@
     min-height: calc(100vh - 75px);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 3fr 2fr;
+
+    .about-image-wrapper {
+        width: 100%;
+        padding: 3rem 0;
+    }
+
+    .about-content-wrapper {
+        width: 100%;
+        min-height: calc(100vh - 75px);
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .about-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .about-actions {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-top: 1px solid #ccc;
+
+            .about-button {
+                font-size: 1.2em;
+                background-color: #979DAC;
+                padding: 6px 22px;
+                border-radius: 3px;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.1);
+                    box-shadow: 4px 4px 8px rgba(48, 41, 29, 0.544);
+                }
+            }
+        }
+    }
 }
