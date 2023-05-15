@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 import { UserContext } from "../store/user-context";
+import CommentForm from "../comments/comment-form";
+import CommentItem from "../comments/comment-item";
 
 function BlogDetail() {
     const [blog, setBlog] = useState(null);
@@ -41,6 +43,13 @@ function BlogDetail() {
                     <div>
                         <h1>{blog?.title}</h1>
                         <p>{blog?.body}</p>
+                    </div>
+
+                    <div>
+                        {user && <CommentForm blog_id={blog.id} user_id={user.id} />}
+                        <div>
+                            {comments.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
+                        </div>
                     </div>
 
                     <div>
