@@ -30,6 +30,12 @@ function SkillForm({ skill }) {
             },
             body: JSON.stringify(dataToSubmit),
         })
+        .then(response => {
+            if (response.ok) {
+                navigate('/skills');
+            }
+        })
+        .catch(error => console.log('skill form error: ', error));
     }
 
     return (

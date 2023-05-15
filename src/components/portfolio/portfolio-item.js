@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function PortfolioItem({portfolio}) {
 
-    let image = portfolio.thumb_image ? `http://localhost:4000${portfolio.thumb_image.url}` : "https://via.placeholder.com/400x300";
+    let image = portfolio.thumb_image?.url ? `http://localhost:4000${portfolio.thumb_image.url}` : "https://placehold.co/400x300";
 
     return (
         <Link to={`/portfolios/${portfolio.id}`} className="portfolio-item">

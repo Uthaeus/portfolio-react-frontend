@@ -7,7 +7,7 @@ function PortfolioDetail() {
     const [portfolio, setPortfolio] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
-    const { user } = useContext(UserContext);
+    const userCtx = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,6 +37,8 @@ function PortfolioDetail() {
             .catch((err) => console.log("delete error:", err));
     }
 
+    let image = portfolio.main_image?.url ? `http://localhost:4000${portfolio.main_image.url}` : "https://placehold.co/600x400";
+
     return (
         <div>
             <h1>Portfolio Detail</h1>
@@ -47,10 +49,10 @@ function PortfolioDetail() {
                     <h2>{portfolio.title}</h2>
                     <p>{portfolio.subtitle}</p>
                     <p>{portfolio.description}</p>
-                    <img src={`http://localhost:4000${portfolio.main_image?.url}`} alt={portfolio.title} width='600px' height='400px' />
+                    <img src={image} alt={portfolio.title} width='600px' height='400px' />
                 </div>
             )}
-            {user.role === "site_admin" && (
+            {userCtx.user?.role === "site_admin" && (
                 <>
                     <Link to={`/portfolios/${id}/edit`} className="btn btn-success">Edit Portfolio</Link>
                     <button className="btn btn-danger" onClick={deleteHandler}>Delete Portfolio</button>

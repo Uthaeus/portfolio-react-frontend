@@ -23,12 +23,14 @@ function CategoryItem({ category }) {
         .catch(error => console.log('category delete error: ', error));
     }
 
+    console.log('category item: ', category);
+
     return (
         <div className="category-item-wrapper">
             <Link to={`/categories/${category.id}`} className="category-item">
                 <h3>{category.title}</h3>
             </Link>
-            {user && user.role === 'site_admin' && (
+            {user && user.role === 'site_admin' && category.blogs.length < 1 && (
                 <div className="category-item-actions">
                     <button onClick={itemDeleteHandler} className="btn btn-danger">Delete</button>
                 </div>

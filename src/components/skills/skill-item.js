@@ -1,10 +1,10 @@
-
+import { Link } from "react-router-dom";
 
 function SkillItem({ skill }) {
     return (
-        <div className="skill-item">
+        <Link to={`/skills/${skill.id}`} className="skill-item">
             <h3>{skill.name}</h3>
-        </div>
+        </Link>
     );
 }
 

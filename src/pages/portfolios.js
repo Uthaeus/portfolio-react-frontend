@@ -7,7 +7,7 @@ import { UserContext } from "../components/store/user-context";
 function Portfolios() {
     const [portfolios, setPortfolios] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { user } = useContext(UserContext);
+    const userCtx = useContext(UserContext);
 
     useEffect(() => {
         fetch("http://localhost:4000/portfolios")
@@ -22,7 +22,7 @@ function Portfolios() {
     return (
         <div>
             <h1>Portfolios</h1>
-            {user?.role === "site_admin" && <Link to="/portfolios/new">Create Portfolio</Link>}
+            {userCtx.user?.role === "site_admin" && <Link to="/portfolios/new">Create Portfolio</Link>}
             <hr />
             {isLoading && <p>Loading...</p>}
             {!isLoading && (
