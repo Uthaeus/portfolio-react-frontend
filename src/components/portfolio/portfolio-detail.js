@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-import { UserContext } from "../components/store/user-context";
+import { UserContext } from "../store/user-context";
 
 function PortfolioDetail() {
     const [portfolio, setPortfolio] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
     const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:4000/portfolios/${id}`)
@@ -18,6 +19,23 @@ function PortfolioDetail() {
             })
             .catch((err) => console.log('portfolio error:', err));
     }, [id]);
+
+    function deleteHandler() {
+        fetch(`http://localhost:4000/portfolios/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("portfolio_token")}`
+            },
+        })
+            .then((res) => {
+                if (res.ok) {
+                    navigate("/portfolios");
+                    return res.json();
+                }
+                throw res;
+            })
+            .catch((err) => console.log("delete error:", err));
+    }
 
     return (
         <div>
@@ -35,7 +53,7 @@ function PortfolioDetail() {
             {user.role === "site_admin" && (
                 <>
                     <Link to={`/portfolios/${id}/edit`} className="btn btn-success">Edit Portfolio</Link>
-                    <button className="btn btn-danger">Delete Portfolio</button>
+                    <button className="btn btn-danger" onClick={deleteHandler}>Delete Portfolio</button>
                 </>
             )}
             <Link to="/portfolios" className="btn btn-primary">Back to Portfolios</Link>

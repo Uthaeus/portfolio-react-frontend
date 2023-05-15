@@ -22,7 +22,7 @@ function Portfolios() {
     return (
         <div>
             <h1>Portfolios</h1>
-            {user.role === "site_admin" && <Link to="/portfolios/new">Create Portfolio</Link>}
+            {user?.role === "site_admin" && <Link to="/portfolios/new">Create Portfolio</Link>}
             <hr />
             {isLoading && <p>Loading...</p>}
             {!isLoading && (

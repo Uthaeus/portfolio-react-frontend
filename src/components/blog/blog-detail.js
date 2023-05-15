@@ -6,6 +6,7 @@ import { UserContext } from "../store/user-context";
 
 function BlogDetail() {
     const [blog, setBlog] = useState(null);
+    const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { user } = useContext(UserContext);
     const { id } = useParams();
@@ -20,6 +21,7 @@ function BlogDetail() {
                 }
             })
             .then((data) => {
+                console.log("blog detail data:", data);
                 setBlog(data);
                 setIsLoading(false);
             })

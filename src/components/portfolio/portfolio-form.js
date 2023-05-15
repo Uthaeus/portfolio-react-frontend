@@ -28,7 +28,7 @@ function PortfolioForm({portfolio}) {
     function submitHandler(data) {
         console.log(data);
         let url = portfolio ? `http://localhost:4000/portfolios/${portfolio.id}` : "http://localhost:4000/portfolios";
-        let method = portfolio ? "PUT" : "POST";
+        let method = portfolio ? "PATCH" : "POST";
         let formData = buildForm(data);
 
         fetch(url, {
@@ -77,13 +77,13 @@ function PortfolioForm({portfolio}) {
 
                 <div className="form-group mb-3">
                     <label htmlFor="thumb_image">Thumb Image</label>
-                    <input type="file" className="form-control" {...register("thumb_image", { required: true })} />
+                    <input type="file" className="form-control" {...register("thumb_image")} />
                     {error?.thumb_image && <span className="text-danger">This field is required</span>}
                 </div>
 
                 <div className="form-group mb-3">
                     <label htmlFor="main_image">Main Image</label>
-                    <input type="file" className="form-control" {...register("main_image", { required: true })} />
+                    <input type="file" className="form-control" {...register("main_image")} />
                     {error?.main_image && <span className="text-danger">This field is required</span>}
                 </div>
 
