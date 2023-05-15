@@ -23,14 +23,34 @@ function BlogDetail() {
                 }
             })
             .then((data) => {
-                console.log("blog detail data:", data);
                 setBlog(data);
+                setComments(data.comments.reverse());
                 setIsLoading(false);
             })
             .catch((error) => {
                 console.log("blog detail error:", error);
             });
     }, [id]);
+
+    function addCommentHandler(comment) {
+        setComments((prevComments) => [comment, ...prevComments]);
+    }
+
+    function commentDeleteHandler(commentId) {
+        fetch(`http://localhost:4000/comments/${commentId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('portfolio_token')}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                let tempComments = comments.filter(comment => comment.id !== commentId);
+                setComments(tempComments);
+            }
+        })
+        .catch(error => console.log('comment delete error', error));
+    }
 
     return (
         <div className="blog-detail-container">
@@ -46,9 +66,11 @@ function BlogDetail() {
                     </div>
 
                     <div>
-                        {user && <CommentForm blog_id={blog.id} user_id={user.id} />}
+                        {user && <CommentForm blog_id={blog.id} user_id={user.id} addCommentHandler={addCommentHandler} />}
                         <div>
-                            {comments.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
+                            <h2>Comments</h2>
+                            <hr />
+                            {comments.map((comment) => <CommentItem key={comment.id} comment={comment} commentDeleteHandler={commentDeleteHandler} />)}
                         </div>
                     </div>
 

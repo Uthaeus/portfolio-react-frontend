@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
-function CommentForm({ blog_id, user_id }) {
-    const { register, handleSubmit, error } = useForm();
+function CommentForm({ blog_id, user_id, addCommentHandler }) {
+    const { register, handleSubmit, error, reset } = useForm();
 
     function submitHandler(data) {
         console.log('submitHandler', data);
@@ -24,8 +24,13 @@ function CommentForm({ blog_id, user_id }) {
         })
         .then(response => {
             if (response.ok) {
+                reset();
                 return response.json();
             }
+        })
+        .then(data => {
+            console.log('comment submit data', data);
+            addCommentHandler(data);
         })
         .catch(error => console.log('comment submit error', error));
     }
