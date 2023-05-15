@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 function CategoryForm({ category }) {
     const { register, handleSubmit, reset, error } = useForm();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (category) {
@@ -12,6 +14,30 @@ function CategoryForm({ category }) {
 
     function submitHandler(data) {
         console.log('data: ', data);
+        const dataToSend = {
+            category: {
+                title: data.title
+            }
+        };
+
+        let url = 'http://localhost:4000/categories';
+        let method = 'POST';
+
+        fetch(url, {
+            method: method,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('portfolio_token'),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        })
+        .then(response => {
+            if (response.ok) {
+                navigate('/categories');
+                return response.json();
+            }
+        })
+        .catch(error => console.log('category form error: ', error));
     }
 
     return (

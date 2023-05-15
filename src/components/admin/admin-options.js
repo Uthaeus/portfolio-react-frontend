@@ -9,7 +9,7 @@ function AdminOptions() {
             </div>
             <hr />
             <div className="admin-options-content">
-                <Link to='#' className="admin-options-link">Blog Categories</Link>
+                <Link to='/categories' className="admin-options-link">Blog Categories</Link>
             </div>
         </div>
     );

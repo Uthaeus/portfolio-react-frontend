@@ -15,6 +15,10 @@ import NewBlog from "./components/blog/new-blog";
 import BlogDetail from "./components/blog/blog-detail";
 import EditBlog from "./components/blog/edit-blog";
 import AdminOptions from "./components/admin/admin-options";
+import Categories from "./components/category/categories";
+import CategoryDetail from "./components/category/category-detail";
+import EditCategory from "./components/category/edit-category";
+import NewCategory from "./components/category/new-category";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +39,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <AdminOptions />
+        element: <AdminOptions />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />
+      },
+      {
+        path: "/categories/:id",
+        element: <CategoryDetail />
+      },
+      {
+        path: "/categories/:id/edit",
+        element: <EditCategory />
+      },
+      {
+        path: "/categories/new",
+        element: <NewCategory />
       }
     ]
   },

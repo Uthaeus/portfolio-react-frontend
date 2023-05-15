@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 import BlogItem from "../components/blog/blog-item";
 import { UserContext } from "../components/store/user-context";
+import CategoryItem from "../components/category/category-item";
 
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthorized } = useContext(UserContext);
 
@@ -13,7 +15,9 @@ function Blogs() {
     fetch("http://localhost:4000/blogs")
       .then((response) => response.json())
       .then((data) => {
-        setBlogs(data);
+        console.log("blogs index data:", data);
+        setBlogs(data.blogs);
+        setCategories(data.categories);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -43,9 +47,7 @@ function Blogs() {
           <div className="blogs-sidebar-header">
             <h2>Blog Categories</h2>
             <ul>
-              <li>Category 1</li>
-              <li>Category 2</li>
-              <li>Category 3</li>
+              {categories.map((category) => <CategoryItem key={category.id} category={category} />)}
             </ul>
           </div>
           <div className="blogs-sidebar-socials-wrapper">

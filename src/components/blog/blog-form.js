@@ -1,10 +1,11 @@
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
 import { UserContext } from "../store/user-context";
 
 function BlogForm({ blog }) {
+    const [categories, setCategories] = useState([]);
     const { register, handleSubmit, error, reset } = useForm();
     const userCtx = useContext(UserContext);
     const navigate = useNavigate();
@@ -15,12 +16,22 @@ function BlogForm({ blog }) {
         }
     }, [blog, reset]);
 
+    useEffect(() => {
+        fetch("http://localhost:4000/categories")
+            .then(response => response.json())
+            .then(data => {
+                setCategories(data);
+            })
+            .catch(error => console.log('blog form categories error', error));
+    }, []);
+
     function buildForm(data) {
         const formData = new FormData();
         formData.append('blog[user_id]', userCtx.user.id);
         formData.append('blog[title]', data.title);
         formData.append('blog[body]', data.body);
         formData.append('blog[image]', data.image[0]);
+        formData.append('blog[category_id]', data.category_id);
         return formData;
     }
 
@@ -55,6 +66,14 @@ function BlogForm({ blog }) {
 
             <form onSubmit={handleSubmit(submitHandler)} className="blog-form">
                 <div className="form-group mb-3">
+                    <label htmlFor="category">Category</label>
+                    <select className="form-control" {...register('category_id', { required: true })}>
+                        <option value="">Select a category</option>
+                        {categories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+                    </select>
+                </div>
+
+                <div className="form-group mb-3">
                     <label htmlFor="title">Title</label>
                     <input type='text' className="form-control" {...register('title', { required: true })} />
                     {error?.title && <span className="text-danger">Title is required</span>}
@@ -68,11 +87,10 @@ function BlogForm({ blog }) {
 
                 <div className="form-group mb-3">
                     <label htmlFor="image">Image</label>
-                    <input type='file' className="form-control" {...register('image', { required: true })} />
-                    {error?.image && <span className="text-danger">Image is required</span>}
+                    <input type='file' className="form-control" {...register('image')} />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">{blog ? 'Update' : 'Submit'}</button>
             </form>
         </div>
     );

@@ -25,7 +25,7 @@ function CategoryItem({ category }) {
 
     return (
         <div className="category-item-wrapper">
-            <Link to='#' className="category-item">
+            <Link to={`/categories/${category.id}`} className="category-item">
                 <h3>{category.title}</h3>
             </Link>
             {user && user.role === 'site_admin' && (
