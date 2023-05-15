@@ -13,7 +13,23 @@ function SkillForm({ skill }) {
     }, [skill, reset]);
 
     function submitHandler(data) {
-        console.log(data);
+        let dataToSubmit = {
+            skill: {
+                name: data.name,
+                percent_utilized: data.percent_utilized
+            }
+        };
+
+        let url = 'http://localhost:4000/skills';
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('portfolio_token'),
+            },
+            body: JSON.stringify(dataToSubmit),
+        })
     }
 
     return (

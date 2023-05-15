@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import SkillItem from "./skill-item";
+
 function Skills() {
     const [skills, setSkills] = useState([]);
 
@@ -16,9 +18,10 @@ function Skills() {
     return (
         <div className="container">
             <h1>Skills</h1>
+            <Link to="/skills/new">Add Skill</Link>
             <hr />
             <div>
-                
+                {skills.map((skill) => <SkillItem key={skill.id} skill={skill} />)}
             </div>
         </div>
     );
