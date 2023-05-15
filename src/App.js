@@ -23,6 +23,11 @@ import Skills from "./components/skills/skills";
 import NewSkill from "./components/skills/new-skill";
 import EditSkill from "./components/skills/edit-skill";
 import SkillDetail from "./components/skills/skill-detail";
+import PortfolioLayout from "./components/portfolio-layout";
+import Portfolios from "./pages/portfolios";
+import NewPortfolio from "./components/portfolio/new-portfolio";
+import EditPortfolio from "./components/portfolio/edit-portfolio";
+import PortfolioDetail from "./components/portfolio/portfolio-detail";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +103,28 @@ const router = createBrowserRouter([
       {
         path: "/blogs/:id/edit",
         element: <EditBlog />
+      }
+    ]
+  },
+  {
+    path: "/portfolios",
+    element: <PortfolioLayout />,
+    children: [
+      {
+        index: true,
+        element: <Portfolios />
+      },
+      {
+        path: "/portfolios/new",
+        element: <NewPortfolio />
+      },
+      {
+        path: "/portfolios/:id/edit",
+        element: <EditPortfolio />
+      },
+      {
+        path: "/portfolios/:id",
+        element: <PortfolioDetail />
       }
     ]
   },
