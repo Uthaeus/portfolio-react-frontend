@@ -18,7 +18,6 @@ function Categories() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('data: ', data);
             setCategories(data);
             setIsLoading(false);
         })

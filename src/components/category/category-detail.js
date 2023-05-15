@@ -18,7 +18,6 @@ function CategoryDetail() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('data: ', data);
             setCategory(data);
         })
         .catch(error => console.log('category detail error: ', error));

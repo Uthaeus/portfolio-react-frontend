@@ -19,6 +19,10 @@ import Categories from "./components/category/categories";
 import CategoryDetail from "./components/category/category-detail";
 import EditCategory from "./components/category/edit-category";
 import NewCategory from "./components/category/new-category";
+import Skills from "./components/skills/skills";
+import NewSkill from "./components/skills/new-skill";
+import EditSkill from "./components/skills/edit-skill";
+import SkillDetail from "./components/skills/skill-detail";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +60,22 @@ const router = createBrowserRouter([
       {
         path: "/categories/new",
         element: <NewCategory />
+      },
+      {
+        path: "/skills",
+        element: <Skills />
+      },
+      {
+        path: "/skills/new",
+        element: <NewSkill />
+      },
+      {
+        path: "/skills/:id/edit",
+        element: <EditSkill />
+      },
+      {
+        path: "/skills/:id",
+        element: <SkillDetail />
       }
     ]
   },

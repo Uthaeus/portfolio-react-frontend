@@ -15,7 +15,6 @@ function Blogs() {
     fetch("http://localhost:4000/blogs")
       .then((response) => response.json())
       .then((data) => {
-        console.log("blogs index data:", data);
         setBlogs(data.blogs);
         setCategories(data.categories);
         setIsLoading(false);
