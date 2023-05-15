@@ -6,7 +6,7 @@ import { UserContext } from "../store/user-context";
 function MainNavigation() {
     const userCtx = useContext(UserContext);
 
-    let welcome = userCtx.user ? "Welcome " + userCtx.user.username : "Welcome Guest";
+    let welcomeName = userCtx.user ? userCtx.user.username : "Guest";
 
     function logoutHandler() {
         console.log('logoutHandler');
@@ -29,7 +29,7 @@ function MainNavigation() {
     return (
         <nav className="main-nav-container">
             <div className="welcome-wrapper">
-                <p className="main-nav-welcome">{welcome}</p>
+                <p className="main-nav-welcome">Welcome, <span className="welcome-name">{welcomeName}</span></p>
             </div>
 
             <div className="links-wrapper">
@@ -41,8 +41,8 @@ function MainNavigation() {
             </div>
 
             <div className="auth-links-wrapper">
-                {userCtx.user && <button onClick={logoutHandler} className="logout-btn">Sign Out</button>}
-                {userCtx.user && userCtx.user.role === 'site_admin' && <Link to='/admin' className="nav-link">Admin Options</Link>}
+                {userCtx.user && <button onClick={logoutHandler} className="logout-btn"><i className="bi bi-door-open-fill"></i></button>}
+                {userCtx.user && userCtx.user.role === 'site_admin' && <Link to='/admin' className="nav-link"><i className="bi bi-person-lines-fill"></i></Link>}
                 {!userCtx.user && (
                     <>
                         <NavLink to="/auth/sign-up" className={({isActive}) => isActive ? 'nav-link link-active' : 'nav-link'}>Sign Up</NavLink>

@@ -5,12 +5,28 @@
     background-color: rgb(10, 13, 14);
     color: grey;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
 
     .welcome-wrapper {
         background-color: rgb(48, 88, 101);
         color: black;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .main-nav-welcome {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #161616;
+        }
+
+        .welcome-name {
+            font-size: 1.7em;
+            font-weight: bold;
+            color: #0d2930;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 2px rgba(16, 27, 27, 0.5);
+        }
     }
 
     .nav-link {
