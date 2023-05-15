@@ -12,8 +12,40 @@ function PortfolioForm({portfolio}) {
         }
     }, [portfolio, reset]);
 
+    function buildForm(data) {
+        let formData = new FormData();
+
+        formData.append("portfolio[title]", data.title);
+        formData.append("portfolio[subtitle]", data.subtitle);
+        formData.append("portfolio[description]", data.description);
+        formData.append("portfolio[link]", data.link);
+        formData.append("portfolio[main_image]", data.main_image[0]);
+        formData.append("portfolio[thumb_image]", data.thumb_image[0]);
+
+        return formData;
+    }
+
     function submitHandler(data) {
         console.log(data);
+        let url = portfolio ? `http://localhost:4000/portfolios/${portfolio.id}` : "http://localhost:4000/portfolios";
+        let method = portfolio ? "PUT" : "POST";
+        let formData = buildForm(data);
+
+        fetch(url, {
+            method: method,
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("portfolio_token")}`
+            },
+            body: formData
+        })
+        .then(res => {
+            if (res.ok) {
+                navigate("/portfolios");
+                return res.json();
+            }
+            throw res;
+        })
+        .catch(error => console.log('portfolio error:', error));
     }
 
     return (
@@ -55,7 +87,7 @@ function PortfolioForm({portfolio}) {
                     {error?.main_image && <span className="text-danger">This field is required</span>}
                 </div>
 
-                <button type="submit" className="btn btn-primary me-3">Save</button>
+                <button type="submit" className="btn btn-primary me-3">{portfolio ? 'Update' : 'Save'}</button>
             </form>
         </div>
     );

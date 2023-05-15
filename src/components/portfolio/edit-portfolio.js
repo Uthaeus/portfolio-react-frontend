@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import PortfolioForm from "./portfolio-form";
+
 function EditPortfolio() {
     const [portfolio, setPortfolio] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +27,12 @@ function EditPortfolio() {
         <div>
             <h1>Edit Portfolio</h1>
             <hr />
+            {isLoading && <p>Loading...</p>}
+            {!isLoading && (
+                <PortfolioForm portfolio={portfolio} />
+            )}
+            <Link to={`/portfolios/${id}`} className="btn btn-primary">Back to Portfolio</Link>
+            <Link to="/portfolios" className="btn btn-primary">Back to Portfolios</Link>
         </div>
     );
 }
