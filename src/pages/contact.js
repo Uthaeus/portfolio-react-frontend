@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import contactImage from "../assets/images/contact_img.jpg";
+import SkillContactItem from "../components/skills/skill-contact-item";
 
 function ContactPage() {
     const [skills, setSkills] = useState([]);
@@ -40,10 +41,7 @@ function ContactPage() {
                     <div className="skills-wrapper">
                         <h2 className="skills-title">Skills</h2>
                         {skills.map(skill => (
-                            <div className="skill-wrapper" key={skill.id}>
-                                <p className="skill-name">{skill.name}</p>
-                                <p className="skill-level">{skill.percent_utilized}</p>
-                            </div>
+                            <SkillContactItem key={skill.id} skill={skill} />
                         ))}
                     </div>
                 </div>
