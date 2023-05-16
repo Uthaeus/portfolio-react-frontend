@@ -1,9 +1,12 @@
+@import 'blog-navigation';
 
 .blog-layout-container {
     width: 100%;
     min-height: 100vh;
     background-color: rgb(136, 162, 179);
     color: black;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
 }
 
 .blogs-container {

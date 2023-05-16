@@ -1,12 +1,12 @@
 import { Outlet } from "react-router";
 
-import MainNavigation from "./navigation/main-navigation";
+import BlogNavigation from "./navigation/blog-navigation";
 
 function BlogLayout() {
 
     return (
         <div className="blog-layout-container">
-            <MainNavigation />
+            <BlogNavigation />
             <Outlet />
         </div>
     );
