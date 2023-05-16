@@ -54,5 +54,39 @@
                 }
             }
         }
+
+        .about-list-wrapper {
+            width: 100%;
+            padding: 1rem;
+        }
+    }
+}
+
+.about-list-item-card {
+    width: 100%;
+    padding: 6px 12px;
+    margin: 1rem 0;
+
+    .list-item {
+        font-size: 1.2em;
+    }
+}
+
+.social-item-card {
+    width: 100%;
+    padding: 12px 22px;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+
+    .social-item {
+        font-size: 1.6em;
+        color: #979DAC;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+            color: #023E7D;
+        }
     }
 }

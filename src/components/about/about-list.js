@@ -3,8 +3,8 @@
 function AboutListItem({ title }) {
 
     return (
-        <div className='card'>
-            <p className="list-item-link">{title}</p>
+        <div className='card about-list-item-card'>
+            <p className="list-item">{title}</p>
         </div>
     );
 }
