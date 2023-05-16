@@ -25,17 +25,29 @@ function Blogs() {
       });
   }, []);
 
+  let featuredBlog = blogs[0];
+
   return (
     <div className="blogs-container">
+
       <div className="blogs-header">
-        <h1 className="blogs-title">Blogs</h1>
-        {isAuthorized && <Link to="/blogs/new" className="btn btn-primary">New Blog</Link>}
+        <div className="blogs-header-title-wrapper">
+          <h1 className="blogs-header-title">Welcome to my Blogs</h1>
+          {isAuthorized && <Link to="/blogs/new" className="new-blog-btn">New Blog</Link>}
+        </div>
+
+        <div className="blogs-subtitle-wrapper">
+          <h2 className="blogs-header-subtitle">Featured Blog_____________</h2>
+          <Link to={`/blogs/${featuredBlog?.id}`} className="blogs-header-link">{featuredBlog?.title}</Link>
+        </div>
       </div>
+
       <hr />
-      <div className="blogs-content">
+
+      <div className="blogs-content-wrapper">
         {isLoading && <p>Loading...</p>}
         {!isLoading && (
-          <div className="blogs-content-wrapper">
+          <div className="blogs-content">
             {blogs.map((blog) => (
               <BlogItem key={blog.id} blog={blog} />
             ))}
@@ -44,17 +56,17 @@ function Blogs() {
         
         <div className="blogs-sidebar">
           <div className="blogs-sidebar-header">
-            <h2>Blog Categories</h2>
+            <h2 className="blogs-sidebar-title">Categories</h2>
             <ul>
-              {categories.map((category) => <CategoryItem key={category.id} category={category} />)}
+              {categories.map((category) => <li><Link key={category.id} className="sidebar-category-link">{category.title}</Link></li>)}
             </ul>
           </div>
           <div className="blogs-sidebar-socials-wrapper">
-            <h2>Socials</h2>
-            <Link to="#" className="sidebar-social-link">Facebook</Link>
-            <Link to="#" className="sidebar-social-link">Github</Link>
-            <Link to="#" className="sidebar-social-link">Twitter</Link>
-            <Link to="#" className="sidebar-social-link">LinkedIn</Link>
+            
+            <a href="https://www.facebook.com/roman.lavery" target="_blank" rel='noreferrer' className="sidebar-social-link"><i className="bi bi-facebook"></i></a>
+            <a href="https://github.com/Uthaeus" target="_blank" rel='noreferrer' className="sidebar-social-link"><i className="bi bi-github"></i></a>
+            <a href="https://twitter.com/roman_lavery" target="_blank" rel='noreferrer' className="sidebar-social-link"><i className="bi bi-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/roman-lavery-software-dev/" target="_blank" rel='noreferrer' className="sidebar-social-link"><i className="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
