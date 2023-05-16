@@ -4,11 +4,15 @@ import aboutImage from '../assets/images/about_img.jpeg';
 
 import AboutListItem from '../components/about/about-list';
 import AboutSocialItem from '../components/about/about-social';
+import { set } from 'react-hook-form';
 
 function AboutPage() {
     const [coursesToggled, setCoursesToggled] = useState(false);
+    const [coursesDisplayed, setCoursesDisplayed] = useState(false);
     const [projectsToggled, setProjectsToggled] = useState(false);
+    const [projectsDisplayed, setProjectsDisplayed] = useState(false);
     const [socialsToggled, setSocialsToggled] = useState(false);
+    const [socialsDisplayed, setSocialsDisplayed] = useState(false);
 
     const courses = [
         'Full Stack Web Development Bootcamp',
@@ -25,17 +29,70 @@ function AboutPage() {
         'Chat Application',
     ];
 
+    function halfSecond() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, 450);
+        });
+    }
+
     function recentCoursesToggler() {
-        setCoursesToggled(!coursesToggled);
+        if (!coursesToggled === true) {
+            setCoursesToggled(!coursesToggled);
+        } else {
+            let tempList = document.getElementById('courses-list');
+            tempList.classList.remove('show');
+            tempList.classList.add('hide');
+            halfSecond().then(() => {
+                setCoursesToggled(!coursesToggled);
+            });
+        }
     }
 
     function recentProjectsToggler() {
-        setProjectsToggled(!projectsToggled);
+        if (!projectsToggled === true) {
+            setProjectsToggled(!projectsToggled);
+        } else {
+            let tempList = document.getElementById('projects-list');
+            tempList.classList.remove('show');
+            tempList.classList.add('hide');
+            halfSecond().then(() => {
+                setProjectsToggled(!projectsToggled);
+            });
+        }
     }
 
     function socialsToggler() {
-        setSocialsToggled(!socialsToggled);
+        if (!socialsToggled === true) {
+            setSocialsToggled(!socialsToggled);
+        } else {
+            let tempList = document.getElementById('socials-list');
+            tempList.classList.remove('show');
+            tempList.classList.add('hide');
+            halfSecond().then(() => {
+                setSocialsToggled(!socialsToggled);
+            });
+        }
     }
+
+    let coursesContent = (
+        <div id='courses-list' className='courses-list show'>
+            {courses.map(course => <AboutListItem key={course} title={course} type='course' />)}
+        </div>
+    );
+
+    let projectsContent = (
+        <div id='projects-list' className='projects-list show'>
+            {projects.map(project => <AboutListItem key={project} title={project} type='project' />)}
+        </div>
+    );
+
+    let socialsContent = (
+        <div id='socials-list' className='socials-list show'>
+            <AboutSocialItem />
+        </div>
+    );
     
     return (
         <div className="about-container">
@@ -54,9 +111,9 @@ function AboutPage() {
                 </div>
 
                 <div className="about-list-wrapper">
-                    {coursesToggled && courses.map(course => <AboutListItem key={course} title={course} type='course' />)}
-                    {projectsToggled && projects.map(project => <AboutListItem key={project} title={project} type='project' />)}
-                    {socialsToggled && <AboutSocialItem />}
+                    {coursesToggled && coursesContent}
+                    {projectsToggled && projectsContent}
+                    {socialsToggled && socialsContent}
                 </div>
             </div>
         </div>
