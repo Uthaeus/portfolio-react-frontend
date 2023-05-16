@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 
 import contactImage from "../assets/images/contact_img.jpg";
 import SkillContactItem from "../components/skills/skill-contact-item";
+import ContactForm from "../components/contact/contact-form";
 
 function ContactPage() {
     const [skills, setSkills] = useState([]);
+    const [isForm, setIsForm] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:4000/contact')
@@ -14,6 +16,11 @@ function ContactPage() {
             })
             .catch(err => console.log('Error fetching skills: ', err));
     }, []);
+
+    function contactFormHandler() {
+        setIsForm(false);
+    }
+
     return (
         <div className="contact-container">
             <div className="contact-content-wrapper">
@@ -21,6 +28,9 @@ function ContactPage() {
                     <div>
                         <h1 className="contact-title">Contact Me</h1>
                         <p className="contact-subtitle">Feel free to reach out to me if you have any questions or concerns.</p>
+                        <button className="contact-btn" onClick={() => setIsForm(!isForm)}>Contact Me</button>
+
+                        {isForm && <ContactForm contactFormHandler={contactFormHandler} />}
                     </div>
                     <div className="contact-image" style={{
                         backgroundImage: `url(${contactImage})`,

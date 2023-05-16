@@ -4,7 +4,7 @@
     min-height: calc(100vh - 75px);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
 
     .contact-content-wrapper {
         display: flex;
@@ -17,7 +17,11 @@
             min-height: 200px;
             display: grid;
             grid-template-columns: 3fr 1fr;
-            border-bottom: 2px solid #ccc;
+            margin-top: 1rem;
+
+            .contact-image {
+                max-height: 200px;
+            }
 
             .contact-title {
                 font-size: 3rem;
@@ -76,6 +80,7 @@
                 font-size: 2rem;
                 font-weight: 700;
                 margin-bottom: 1rem;
+                margin-left: 1rem;
                 color: #001233;
             }
         }
@@ -88,9 +93,14 @@
         align-items: center;
         
         .temp-map {
-            width: 60%;
+            width: 80%;
             height: 500px;
             background-color: grey;
         }
     }
+}
+
+.contact-form {
+    width: 90%;
+    margin: 2rem auto;
 }
