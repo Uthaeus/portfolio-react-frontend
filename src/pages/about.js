@@ -54,8 +54,8 @@ function AboutPage() {
                 </div>
 
                 <div className="about-list-wrapper">
-                    {coursesToggled && courses.map(course => <AboutListItem key={course} title={course} />)}
-                    {projectsToggled && projects.map(project => <AboutListItem key={project} title={project} />)}
+                    {coursesToggled && courses.map(course => <AboutListItem key={course} title={course} type='course' />)}
+                    {projectsToggled && projects.map(project => <AboutListItem key={project} title={project} type='project' />)}
                     {socialsToggled && <AboutSocialItem />}
                 </div>
             </div>
