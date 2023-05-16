@@ -29,23 +29,24 @@ function ContactPage() {
                     }} />
                 </div>
 
-                <div className="contact-info-wrapper">
-                    <p className="contact-info name">Homer Simpson</p>
-                    <p className="contact-info email"><i className="bi bi-envelope-at-fill"></i>: test@test.com</p>
-                    <p className="contact-info phone"><i className="bi bi-telephone-fill"></i>: 555-555-5555</p>
-                    <p className="contact-info address"><i className="bi bi-geo-alt-fill"></i>: 123 Fake Street, Springfield, USA</p>
-                </div>
+                <div className="contact-content-wrapper">
+                    <div className="contact-info-wrapper">
+                        <p className="contact-info name">Homer Simpson</p>
+                        <p className="contact-info"><i className="bi bi-envelope-at-fill"></i>: test@test.com</p>
+                        <p className="contact-info"><i className="bi bi-telephone-fill"></i>: 555-555-5555</p>
+                        <p className="contact-info"><i className="bi bi-geo-alt-fill"></i>: 123 Fake Street, Springfield, USA</p>
+                    </div>
 
-                <div className="skills-wrapper">
-                    <h2 className="skills-title">Skills</h2>
-                    {skills.map(skill => (
-                        <div className="skill" key={skill.id}>
-                            <p className="skill-name">{skill.name}</p>
-                            <p className="skill-level">{skill.percent_utilized}</p>
-                        </div>
-                    ))}
+                    <div className="skills-wrapper">
+                        <h2 className="skills-title">Skills</h2>
+                        {skills.map(skill => (
+                            <div className="skill-wrapper" key={skill.id}>
+                                <p className="skill-name">{skill.name}</p>
+                                <p className="skill-level">{skill.percent_utilized}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-
             </div>
 
             <div className="contact-map-wrapper">

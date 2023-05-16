@@ -33,9 +33,82 @@
             }
         }
 
-        .contact-info-wrapper {
+        .contact-content-wrapper {
             width: 100%;
             color: #001233;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+
+            .contact-info-wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 1rem;
+
+                .contact-info {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    margin-bottom: 1rem;
+                    color: #001233;
+                }
+
+                .name {
+                    font-size: 1.7rem;
+                    font-weight: 700;
+                    padding: 1rem;
+                    margin-bottom: 2rem;
+                    color: #2f0033;
+                }
+            }
+        }
+
+        .skills-wrapper {
+            width: 90%;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            .skills-title {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                color: #001233;
+            }
+
+            .skill-wrapper {
+                height: 30px;
+                width: 500px;
+                max-width: 80%;
+                display: block;
+                margin: auto;
+                margin-top: 20vh;
+                position: relative;
+                background: #555;
+                padding: 3px;
+                box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+
+                .skill-level {
+                    display: block;
+                    height: 100%;
+                    width: 0px;
+                    background-color: rgb(43, 194, 83);
+                    background-image: linear-gradient(
+                        center bottom,
+                        rgb(43, 194, 83) 37%,
+                        rgb(84, 240, 84) 69%
+                    );
+                    position: relative;
+                    overflow: hidden;
+                    font-size: 15px;
+                    text-align: center;
+                    color: white;
+                    transition: all 700ms ease;
+                }
+            }
         }
     }
 
