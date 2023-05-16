@@ -28,6 +28,7 @@ import Portfolios from "./pages/portfolios";
 import NewPortfolio from "./components/portfolio/new-portfolio";
 import EditPortfolio from "./components/portfolio/edit-portfolio";
 import PortfolioDetail from "./components/portfolio/portfolio-detail";
+import Contacts from "./components/contact/contacts";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "/skills/:id",
         element: <SkillDetail />
+      },
+      {
+        path: "/contacts",
+        element: <Contacts />
       }
     ]
   },

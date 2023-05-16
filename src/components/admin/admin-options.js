@@ -11,6 +11,7 @@ function AdminOptions() {
             <div className="admin-options-content">
                 <Link to='/categories' className="admin-options-link">Blog Categories</Link>
                 <Link to='/skills' className="admin-options-link">Skills</Link>
+                <Link to='/contacts' className="admin-options-link">Contacts</Link>
             </div>
         </div>
     );

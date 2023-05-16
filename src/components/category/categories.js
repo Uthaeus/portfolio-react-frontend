@@ -36,6 +36,7 @@ function Categories() {
                 {isLoading && <div>Loading...</div>}
                 {!isLoading && categoryList}
             </div>
+            <Link to="/admin">Back to Admin</Link>
         </div>
     );
 }

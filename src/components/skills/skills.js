@@ -23,6 +23,7 @@ function Skills() {
             <div>
                 {skills.map((skill) => <SkillItem key={skill.id} skill={skill} />)}
             </div>
+            <Link to="/admin">Back to Admin</Link>
         </div>
     );
 }
