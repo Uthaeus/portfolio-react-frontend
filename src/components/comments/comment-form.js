@@ -36,15 +36,15 @@ function CommentForm({ blog_id, user_id, addCommentHandler }) {
     }
 
     return (
-        <div>
+        <div className="comment-form-wrapper">
             <form onSubmit={handleSubmit(submitHandler)}>
-                <div className="form-group">
+                <div className="form-group mb-2">
                     <label htmlFor="comment">Comment</label>
                     <textarea className="form-control" {...register("comment", { required: true, min: '3' })} />
                     {error?.comment && <span className="text-danger">This field is required</span>}
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="comment-form-btn">Submit</button>
             </form>
         </div>
     );

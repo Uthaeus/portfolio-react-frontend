@@ -52,38 +52,46 @@ function BlogDetail() {
         .catch(error => console.log('comment delete error', error));
     }
 
+    let daysAgo = Math.round((Date.now() - Date.parse(blog?.created_at)) / 1000 / 60 / 60 / 24);
+
     return (
         <div className="blog-detail-container">
             {isLoading && <p>Loading...</p>}
             { !isLoading && (
-                <>
+                <div className="blog-detail-wrapper">
                     <div>
-                        <img src={`http://localhost:4000${blog.image.url}`} alt={blog?.title} width='600px' height='400px' />
-                    </div>
-                    <div>
-                        <h1>{blog?.title}</h1>
-                        <p>{blog?.body}</p>
-                    </div>
-
-                    <div>
-                        {user && <CommentForm blog_id={blog.id} user_id={user.id} addCommentHandler={addCommentHandler} />}
                         <div>
-                            <h2>Comments</h2>
-                            <hr />
-                            {comments.map((comment) => <CommentItem key={comment.id} comment={comment} commentDeleteHandler={commentDeleteHandler} />)}
+                            <img src={`http://localhost:4000${blog.image.url}`} alt={blog?.title} width='100%' height='300px' />
+                        </div>
+                        
+
+                        <div className="detail-comment-container">
+                            <CommentForm blog_id={blog.id} user_id={user?.iddd} addCommentHandler={addCommentHandler} />
+                            <div>
+                                <h2 className="detail-comment-title">Comments:</h2>
+                                <hr />
+                                {comments.map((comment) => <CommentItem key={comment.id} comment={comment} commentDeleteHandler={commentDeleteHandler} />)}
+                            </div>
+                        </div>
+
+                        <div className="blog-detail-actions">
+                            {isOwner && (
+                                <>
+                                    <Link to={`/blogs/${id}/edit`} className="btn btn-success">Edit</Link>
+                                    <Link className="btn btn-danger">Delete</Link>
+                                </>
+                            )}
+                            <Link to="/blogs" className="btn btn-primary">Back to Blogs</Link>
                         </div>
                     </div>
-
-                    <div>
-                        {isOwner && (
-                            <>
-                                <Link to={`/blogs/${id}/edit`} className="btn btn-success">Edit</Link>
-                                <Link className="btn btn-danger">Delete</Link>
-                            </>
-                        )}
-                        <Link to="/blogs" className="btn btn-primary">Back to Blogs</Link>
+                    <div className="detail-content-container">
+                        <h1 className="detail-content-title">{blog?.title}</h1>
+                        <p className="detail-content-subtitle">posted by: {blog?.user.username} {daysAgo} days ago</p>
+                        <hr />
+                        <p className="detail-content-body">{blog?.body}</p>
                     </div>
-                </>
+                </div>
+            
             )}
         </div>
     );

@@ -37,7 +37,7 @@ function Blogs() {
         </div>
 
         <div className="blogs-subtitle-wrapper">
-          <h2 className="blogs-header-subtitle">Featured Blog_____________</h2>
+          <h2 className="blogs-header-subtitle">Featured Blog:</h2>
           <Link to={`/blogs/${featuredBlog?.id}`} className="blogs-header-link">{featuredBlog?.title}</Link>
         </div>
       </div>
@@ -56,10 +56,9 @@ function Blogs() {
         
         <div className="blogs-sidebar">
           <div className="blogs-sidebar-header">
-            <h2 className="blogs-sidebar-title">Categories</h2>
-            <ul>
-              {categories.map((category) => <li><Link key={category.id} className="sidebar-category-link">{category.title}</Link></li>)}
-            </ul>
+            <h2 className="blogs-sidebar-title">Categories:</h2>
+            
+            {categories.map((category) => <Link key={category.id} className="sidebar-category-link">{category.title}</Link>)}
           </div>
           <div className="blogs-sidebar-socials-wrapper">
             

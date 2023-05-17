@@ -26,14 +26,14 @@ function EditBlog() {
     }, [id]);
 
     return (
-        <div>
-            <h1>Edit Blog</h1>
+        <div className="new-edit-blog-container">
+            <h1 className="new-edit-blog-title">Edit Blog</h1>
             <hr />
             {isLoading && <p>Loading...</p>}
             {!isLoading && <BlogForm blog={blog} />}
 
-            <Link to={`/blogs/${id}`} className="btn btn-success">Back to Blog</Link>
-            <Link to="/blogs" className="btn btn-primary">Back to Blogs</Link>
+            <Link to={`/blogs/${id}`} className="new-edit-blog-btn">Back to Blog</Link>
+            <Link to="/blogs" className="new-edit-blog-btn">Back to Blogs</Link>
         </div>
     );
 }

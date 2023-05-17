@@ -62,7 +62,6 @@ function BlogForm({ blog }) {
 
     return (
         <div className="blog-form-wrapper">
-            <h1 className="blog-form-title">Blog Form</h1>
 
             <form onSubmit={handleSubmit(submitHandler)} className="blog-form">
                 <div className="form-group mb-3">
@@ -74,6 +73,11 @@ function BlogForm({ blog }) {
                 </div>
 
                 <div className="form-group mb-3">
+                    <label htmlFor="image">Image</label>
+                    <input type='file' className="form-control" {...register('image')} />
+                </div>
+
+                <div className="form-group mb-3">
                     <label htmlFor="title">Title</label>
                     <input type='text' className="form-control" {...register('title', { required: true })} />
                     {error?.title && <span className="text-danger">Title is required</span>}
@@ -81,16 +85,11 @@ function BlogForm({ blog }) {
 
                 <div className="form-group mb-3">
                     <label htmlFor="body">Body</label>
-                    <textarea className="form-control" {...register('body', { required: true })} />
+                    <textarea className="form-control" rows={12} {...register('body', { required: true })} />
                     {error?.body && <span className="text-danger">Body is required</span>}
                 </div>
 
-                <div className="form-group mb-3">
-                    <label htmlFor="image">Image</label>
-                    <input type='file' className="form-control" {...register('image')} />
-                </div>
-
-                <button type="submit" className="btn btn-primary">{blog ? 'Update' : 'Submit'}</button>
+                <button type="submit" className="blog-form-submit">{blog ? 'Update' : 'Submit'}</button>
             </form>
         </div>
     );

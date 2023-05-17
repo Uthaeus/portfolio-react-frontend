@@ -22,8 +22,9 @@
 
             .blogs-header-title {
                 font-size: 2.5em;
-                color: #598392;
+                color: #124559;
                 text-align: center;
+                padding: 1rem 0;
             }
 
             .new-blog-btn {
@@ -43,11 +44,14 @@
         }
 
         .blogs-subtitle-wrapper {
-            width: 60%;
+            width: 70%;
+            margin: 1rem;
+            padding: 2rem;
             margin-left: 10%;
             display: flex;
             flex-direction: column;
-            border-bottom: 4px solid #AEC3B0;
+            border: 1px solid #AEC3B0;
+            border-radius: 4px;
 
             .blogs-header-subtitle {
                 font-size: 1.8em;
@@ -56,11 +60,11 @@
             }
 
             .blogs-header-link {
-                font-size: 1.6em;
+                font-size: 1.8em;
                 color: #598392;
                 text-align: end;
                 transition: all 0.3s ease-in-out;
-                padding-bottom: 1rem;
+                padding-bottom: 2rem;
 
                 &:hover {
                     color: #124559;
@@ -103,10 +107,10 @@
         }
 
         .sidebar-category-link {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #124559;
-            padding: 0.5rem 0;
-            margin: 1rem 0;
+            padding: 1rem 0;
+            margin-left: 1rem;
             transition: all 0.3s ease-in-out;
 
             &:hover {
@@ -136,6 +140,152 @@
                 color: rgb(136, 162, 179);
                 transform: scale(1.2);
             }
+        }
+    }
+}
+
+// Blog Items
+
+.blog-item-container {
+    width: 65%;
+    text-decoration: none;
+    border-bottom: 1px solid #AEC3B0;
+    border-radius: 2px;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.03);
+        border: 1px solid #7c7b7b;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .blog-item-title {
+        font-size: 2.5em;
+        color: #124559;
+        text-align: start;
+        margin-bottom: 1rem;
+    }
+
+    .blog-item-blurb {
+        font-size: 1.2em;
+        color: #EFF6E0;
+        text-align: start;
+        margin-bottom: 1rem;
+    }
+
+    .blog-item-user {
+        font-size: 0.9em;
+        color: #EFF6E0;
+        text-align: end;
+        margin-bottom: 1rem;
+    }
+}
+
+// Blog Detail
+
+.blog-detail-container {
+    width: 100%;
+    position: relative;
+
+    .blog-detail-actions {
+        bottom: 0;
+        left: 0;
+        position:absolute;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+    .blog-detail-wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+
+        .detail-comment-container {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 6rem;
+            padding: 1rem;
+
+            .detail-comment-title {
+                font-size: 1.3em;
+                color: #124559;
+                text-align: start;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    .detail-content-container {
+        width: 80%;
+        margin: 4rem auto;
+
+        .detail-content-title {
+            font-size: 2.7em;
+            color: #124559;
+            text-align: start;
+        }
+
+        .detail-content-subtitle {
+            font-size: 0.8em;
+            color: #01161E;
+            text-align: end;
+            margin-bottom: 1rem;
+        }
+
+        .detail-content-body {
+            font-size: 1.1em;
+            color: #EFF6E0;
+            text-align: start;
+            margin-top: 2rem;
+        }
+    }
+}
+
+// Blog Form
+
+.blog-form-wrapper {
+    width: 70%;
+    margin: 2rem auto;
+
+    .blog-form-submit {
+        width: 25%;
+        padding: 3px 0;
+        margin: 1rem 0;
+        border-radius: 4px;
+        background-color: #124559;
+        color: #EFF6E0;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+// New/Edit Blog 
+
+.new-edit-blog-container {
+    width: 90%;
+    margin: 2rem auto;
+
+    .new-edit-blog-title {
+        font-size: 2.5em;
+        color: #124559;
+    }
+
+    .new-edit-blog-btn {
+        color: #EFF6E0;
+        font-size: 1.1em;
+        margin-left: 1.5rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: #EFF;
         }
     }
 }
