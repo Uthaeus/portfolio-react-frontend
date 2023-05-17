@@ -9,8 +9,8 @@
     .contact-content-wrapper {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        margin: 2rem 0;
 
         .contact-header {
             width: 100%;
@@ -87,13 +87,11 @@
     }
 
     .contact-map-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
         
         .temp-map {
             width: 80%;
+            margin: 6rem auto;
             height: 500px;
             background-color: grey;
         }
