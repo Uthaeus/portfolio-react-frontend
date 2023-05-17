@@ -1,0 +1,101 @@
+
+.portfolio-navigation-container {
+    width: 100%;
+    min-height: 10px;
+    padding: 4px 20px;
+    background-color: #121212;
+    border-bottom: 1px solid #161616;
+
+    .portfolio-nav-content-wrapper {
+        width: 100%;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 6fr 1fr 1fr;
+
+        .portfolio-nav-socials-wrapper {
+            width: 60%;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .portfolio-nav-links-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .portfolio-nav-auth-links-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+    }
+
+    .portfolio-nav-link {
+        color: white;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            color: yellow;
+            border-bottom: 1px solid yellow;
+        }
+    }
+
+    .portfolio-social-link {
+        font-size: 2.3em;
+        color: white;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            color: yellow;
+            transform: scale(1.2);
+        }
+    }
+
+    .portfolio-nav-wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+
+        .portfolio-nav-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .portfolio-nav-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+
+        .portfolio-nav-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .portfolio-nav-toggle {
+                font-size: 1.2em;
+                color: white;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    color: yellow;
+                    font-size: 1.5em;
+                }
+            }
+        }
+    }
+}

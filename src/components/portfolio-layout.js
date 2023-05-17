@@ -1,14 +1,13 @@
 import { Outlet } from "react-router";
 
-import MainNavigation from "./navigation/main-navigation";
+import PortfolioNavigation from "./navigation/portfolio-navigation";
 
 function PortfolioLayout() {
   return (
-    <div>
-      <MainNavigation />
-      <main>
-        <Outlet />
-      </main>
+    <div className="portfolio-layout-container">
+      <PortfolioNavigation />
+      
+      <Outlet />
     </div>
   );
 }
