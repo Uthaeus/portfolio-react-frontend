@@ -1,11 +1,13 @@
 
 .home-container {
-    width: 90%;
+    width: 100%;
     min-height: calc(100vh - 75px);
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     .home-header {
         width: 50%;
@@ -62,4 +64,92 @@
             }
         }
     }
+
+    .home-features {
+        width: 100%;
+        min-height: 250px;
+        bottom: 0;
+        background-color: grey;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
+
+.home-featured-item {
+    width: 75%;
+    min-height: 150px;
+    padding: 1rem;
+    background-color: #00285537;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    // -webkit-animation: fadeinout 6s linear forwards infinite;
+    // animation: fadeinout 6s linear forwards infinite;
+    position: relative;
+    overflow: hidden;
+
+    .home-featured-actions {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+
+        .btn {
+            font-size: 2em;
+            padding: 6px 22px;
+            
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 4px 4px 8px rgba(48, 41, 29, 0.544);
+            }
+        }
+
+        .btn-inc {
+            color:rgba(75, 59, 32, 0.944);
+        }
+
+        .btn-dec {
+            color: rgb(14, 79, 14);
+        }
+    }
+
+    .home-featured-item-content {
+        width: 75%;
+        margin: 2rem auto;
+        text-align: center;
+
+        .home-featured-item-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: #fff;
+            padding: 1rem 0;
+            
+
+            &:hover {
+                text-decoration: underline;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.animate-item {
+    -webkit-animation: fadeinout 5s linear forwards infinite;
+    animation: fadeinout 5s linear forwards infinite;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    30%,70% { opacity: 1; }
+}
+  
+@keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    30%,70% { opacity: 1; }
+}
+    

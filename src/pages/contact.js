@@ -10,9 +10,7 @@ function ContactPage() {
 
     const contactFormEnd = useRef(null);
 
-    function scrollToContactFormEnd() {
-        contactFormEnd.current?.scrollIntoView({ behavior: "smooth" });
-    }
+    
 
     useEffect(() => {
         fetch('http://localhost:4000/contact')
@@ -28,12 +26,16 @@ function ContactPage() {
     }
 
     function contactFormToggle() {
-        if (!isForm === true) {
-            console.log('true');
-            scrollToContactFormEnd();
-        }
+        let isToggled = !isForm === true ? true : null;
 
         setIsForm(!isForm);
+
+        if (isToggled) {
+            window.scrollTo({
+                top: document.getElementById('contact-form-end').offsetTop - 100,
+                behavior: "smooth"
+            });
+        }
     }
 
     return (
@@ -72,7 +74,7 @@ function ContactPage() {
                 <div id="contact-form">
                     {isForm && <ContactForm contactFormHandler={contactFormHandler} />}
                 </div>
-                <div ref={contactFormEnd} />
+                <div id='contact-form-end' ref={contactFormEnd} />
             </div>
 
             <div className="contact-map-wrapper">

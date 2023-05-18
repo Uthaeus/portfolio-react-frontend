@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import HomeFeaturedItem from "../components/home/home-featured-item";
+
 function HomePage() {
     
     return (
@@ -12,6 +14,10 @@ function HomePage() {
                     <Link to='/portfolios' className="home-button portfolio-btn">View my portfolio</Link>
                     <Link to='/contact' className="home-button contact-btn">Contact me</Link>
                 </div>
+            </div>
+
+            <div className="home-features">
+                <HomeFeaturedItem />
             </div>
         </div>
     );
