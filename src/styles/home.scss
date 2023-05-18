@@ -95,15 +95,14 @@
         position: absolute;
         bottom: 0;
         display: flex;
-        justify-content: space-between;
+        align-items: flex-end;
+        justify-content: space-around;
 
         .btn {
             font-size: 2em;
-            padding: 6px 22px;
             
             &:hover {
                 transform: scale(1.1);
-                box-shadow: 4px 4px 8px rgba(48, 41, 29, 0.544);
             }
         }
 

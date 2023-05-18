@@ -12,6 +12,7 @@ function HomeFeaturedItem() {
       .then((data) => {
         console.log("featured items", data);
         setItems([...data.blogs, ...data.portfolios]);
+        setItem(data.blogs[0]);
       })
       .catch((error) => console.log("featured items error", error));
   }, []);
@@ -37,7 +38,6 @@ function HomeFeaturedItem() {
     }
 
   function slideInc() {
-    console.log("slideInc", currentSlide, items.length);
     if (currentSlide + 1 >= items.length) {
       currentSlide = 0;
     } else {
@@ -59,11 +59,11 @@ function HomeFeaturedItem() {
     <div className="home-featured-item">
       <div className="home-featured-actions">
         <button className="btn btn-inc" onClick={slideInc}>
-          +
+            <i className="bi bi-caret-left-fill"></i>
         </button>
         <p>Some recent stuff</p>
         <button className="btn btn-dec" onClick={slideDec}>
-          -
+            <i className="bi bi-caret-right-fill"></i>
         </button>
       </div>
 

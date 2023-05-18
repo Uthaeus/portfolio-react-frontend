@@ -25,12 +25,22 @@ function PortfolioNavigation() {
     }
 
     function navToggleHandler() {
+        let element = document.querySelector(".portfolio-navigation-container");
+        
+        if (navToggle === true) {
+            element.classList.remove("slide-in");
+            element.classList.add("slide-out");
+        } else {
+            element.classList.remove("slide-out");
+            element.classList.add("slide-in");
+        }
+
         setNavToggle(!navToggle);
     }
 
     return (
         <div className="portfolio-navigation-container">
-            {navToggle && (
+            
                 <div className="portfolio-nav-content-wrapper">
                     <div className="portfolio-nav-socials-wrapper">
                         <a className="portfolio-social-link" href="https://github.com/Uthaeus"><i className="bi bi-github"></i></a>
@@ -61,7 +71,6 @@ function PortfolioNavigation() {
                         }
                     </div>
                 </div>
-            )}
 
             <div className="portfolio-nav-wrapper">
                 <div className="portfolio-nav-title-wrapper">
@@ -69,7 +78,7 @@ function PortfolioNavigation() {
                 </div>
 
                 <div className="portfolio-nav-toggle-wrapper">
-                    <p className="portfolio-nav-toggle" onClick={navToggleHandler}>^</p>
+                    <p className="portfolio-nav-toggle" onClick={navToggleHandler}><i className={`bi bi-caret-${navToggle ? 'up' : 'down'}-fill`}></i></p>
                 </div>
             </div>
         </div>

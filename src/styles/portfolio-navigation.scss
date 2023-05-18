@@ -5,9 +5,11 @@
     padding: 4px 20px;
     background-color: #121212;
     border-bottom: 1px solid #161616;
+    
 
     .portfolio-nav-content-wrapper {
         width: 100%;
+        height: 250px;
         padding: 1rem;
         display: grid;
         grid-template-columns: 6fr 1fr 1fr;
@@ -70,7 +72,7 @@
 
         .portfolio-nav-title-wrapper {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
 
             .portfolio-nav-title {
@@ -82,7 +84,7 @@
 
         .portfolio-nav-toggle-wrapper {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
 
             .portfolio-nav-toggle {
@@ -99,3 +101,32 @@
         }
     }
 }
+
+.slide-in {
+    animation: slideInFromTop 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.slide-out {
+    animation: slideOutToTop 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-250px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+    
+@keyframes slideOutToTop {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-250px);
+    }
+}
+    
